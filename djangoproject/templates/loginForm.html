@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+{% block titulo %}
+<title>Inicio de Sesión</title>
+{% endblock %}
+{% block contenido %}
+
+<div>
+    <div id="content">
+        <div id="content-main">
+            <form action="login" method="post" id="login-form">
+                {% csrf_token %}
+                <div >
+                    <label class="required" for="id_username">Usuario:</label> <input type="text" name="username" autofocus="" required="" id="username">
+                </div>
+                <div >
+                    <label class="required" for="id_password">Contraseña:</label> <input type="password" name="password" required="" id="password">
+                    
+                </div>
+                <div >
+                    <input type="submit" value="Submit"><label>&nbsp;</label><a href="registrar" title="Registrar un usuario nuevo">Registrar</a>
+                </div>
+            </form>
+            <div>
+                {% for message in messages %}
+                <h3>{{message}}</h3>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
