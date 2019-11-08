@@ -16,8 +16,8 @@ def login(request):
         auth.login(request, user)
         return render(request,'main.html')
     else:
-        messages.info(request,'Usuario o Contraseña inválido')
-        return redirect('loginForm')
+        messages.info(request,'Usuario o Contraseña inválidos')
+        return render(request,'loginForm.html',{'username':username})
 
 def logout(request):
     auth.logout(request)
@@ -26,18 +26,18 @@ def logout(request):
 def registrar(request):
     if request.method == 'POST':
         nombre = request.POST['first_name']
-        apellido = request.POST['last_name']
+        apellido=  request.POST['last_name']
         username = request.POST['username']
-        email = request.POST['email']
+        email  =request.POST['email']
         password1 =request.POST['password1']
         password2 =request.POST['password2']
         if password1 == password2:
             if User.objects.filter(username=username).exists():
                 messages.info(request,'El usuario ya está registrado')
-                return redirect('registrar')
+                return render(request,'registrar.html',{'nombre':nombre,'apellido':apellido, 'username':username, 'email':email, 'password1':password1, 'password2':password2})
             elif User.objects.filter(email=email).exists():
                 messages.info(request,'El correo ya está registrado')
-                return redirect('registrar')
+                return render(request,'registrar.html',{'nombre':nombre,'apellido':apellido, 'username':username, 'email':email, 'password1':password1, 'password2':password2})
             else:
                 usuario = User.objects.create_user(
                     first_name = nombre,
@@ -49,7 +49,8 @@ def registrar(request):
                 usuario.save()
         else:
             messages.info(request,'La contraseña no coincide')
-            return redirect('registrar')
+            return render(request,'registrar.html',{'nombre':nombre,'apellido':apellido, 'username':username, 'email':email, 'password1':password1, 'password2':password2})
+            #return redirect('registrar')
         return redirect('loginForm')
     else:
         return render(request,'registrar.html')

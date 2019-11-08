@@ -1,24 +1,33 @@
 {% extends 'base.html' %}
+{% load static %}
 {% block titulo %}
 <title>Registrar Usuario</title>
 {% endblock %}
 
 {% block contenido %}
-    <form action="registrar" method="post">
+<div class="registro-cont">
+    <p class="titulo">Registro de Usuario</p>
+    <form id="forma-registro" action="registrar" method="post" class="registro-form" onsubmit="validPass()">
         {% csrf_token %}
-        <input type="text" name="first_name" placeholder="Nombre(s)"><br>
-        <input type="text" name="last_name" placeholder="Apellidos"><br>
-        <input type="text" name="username" placeholder="Nombre de Usuario"><br>
-        <input type="email" name="email" placeholder="Correo electrónico"><br>
-        <input type="password" name="password1" placeholder="Contraseña"><br>
-        <input type="password" name="password2" placeholder="Confirmar contraseña"><br>
+        <input class="campo-registro" type="text" name="first_name" placeholder="Nombre(s)" autofocus required value={{nombre}} ><br>
+        <input class="campo-registro" type="text" name="last_name" placeholder="Apellidos" value={{apellido}}><br>
+        <input class="campo-registro" type="text" name="username" placeholder="Nombre de Usuario" required value={{username}}><br>
+        <input class="campo-registro" type="email" name="email" placeholder="Correo electrónico" required value={{email}}><br>
+        <input class="campo-registro" type="password" name="password1" id="password1" placeholder="Contraseña" required value={{password1}}><br>
+        <input class="campo-registro" type="password" name="password2" id="password2" placeholder="Confirmar contraseña" required value={{password2}}><br>
 
-        <input type="submit">
+        <input type="submit" value="Aceptar" class="btn_login" id="btn-aceptar-reg">
     </form>
 
     <div>
+        <p class="error_msg" hidden id="mensaje-pass">La contraseña no coincide</p>
         {% for message in messages %}
-        <h3> {{message}} </h3>
+        <p class="error_msg"> {{message}}</p>
         {% endfor %}
     </div>
+</div>
+{% endblock %}
+
+{% block script %}
+    <script src="{% static 'js/script-registro.js' %}"></script>
 {% endblock %}

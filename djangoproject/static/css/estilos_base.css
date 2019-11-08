@@ -1,0 +1,82 @@
+body {
+    margin: 0;
+    padding: 0;
+    font-size: 14px;
+    font-family: "Roboto","Lucida Grande","DejaVu Sans","Bitstream Vera Sans",Verdana,Arial,sans-serif;
+    color: black;
+    background: rgb(248, 248, 248);
+}
+.login-cont{
+    text-align: center;
+}
+
+.titulo{
+    font-size: 22px;
+    color: darkgray;
+    margin-bottom: 25px;
+}
+
+.form-cont{
+    height:400px;
+    width: 250px;
+    margin-top: 5%;
+    padding: 15px;
+    margin-left: 44%;
+    text-align: center;
+    border-style: solid;
+    border-width: 3px;
+    border-color:rgba(164, 170, 185, 0.541);
+    border-radius: 15px;
+}
+
+.label_login{
+    color: black;
+}
+
+.div_campos{
+    margin: 10px 0 10px 0;
+}
+
+.btn_login {
+    margin-top: 10px;
+    border-radius: 6px;
+    background: rgb(113, 113, 161);
+    border: none;
+    color: white;
+}
+
+.btn_login:hover {
+    background: rgb(50, 50, 143);
+}
+
+button[disabled], html input[disabled]{
+    cursor: default;
+    background-color: gray;
+}
+button[disabled], html input[disabled]:hover {
+    cursor: default;
+    background-color: gray;
+}
+
+.error_msg{
+    margin-top: 10px;
+    color:red;
+    font-weight: bold;
+}
+
+.registro-cont{
+    height:400px;
+    width: 300px;
+    margin-top: 5%;
+    padding: 15px;
+    margin-left: 44%;
+    text-align: center;
+    border-style: solid;
+    border-width: 3px;
+    border-color:rgba(164, 170, 185, 0.541);
+    border-radius: 15px;
+}
+
+.campo-registro{
+    margin: 5px 0 5px 0;
+}
