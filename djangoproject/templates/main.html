@@ -12,13 +12,15 @@
                     <tr>
                         <th class="lista-descr-h">Descripción</th>
                         <th class="lista-comp-h">Completado</th>
+                        <th></th>
                     </tr>
                 </thead>
                 <tbody>
                     {% for item in items %}
-                        <tr>
+                        <tr {% if item.completado %} class="item-done" {% endif %}>
                             <td>{{item.descripcion}}</td>
-                            <td class="lista-comp-r">{{item.completado}}</td>
+                            <td class="lista-comp-r"><input type="checkbox" class="checkbox-lista" {% if item.completado %} checked {% endif %}></td>
+                            <td><a href="" style="color:red;" title="Borrar registro"><i class="fa fa-trash icono-lista"></i></a></td>
                         </tr>
                     {% endfor %}
                 </tbody>

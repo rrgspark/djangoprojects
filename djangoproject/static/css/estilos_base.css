@@ -84,3 +84,24 @@ button[disabled], html input[disabled]:hover {
 .cont-main{
     margin-top: 2%;
 }
+
+.lista-descr-h{
+    width: 80%;
+}
+
+.lista-comp-h,
+.lista-comp-r{
+    text-align: center;
+}
+
+.item-done{
+    background-color: #dff0d8;
+}
+
+.icono-lista{
+    font-size: 20px;
+}
+
+.checkbox-lista{
+    cursor: pointer;
+}
