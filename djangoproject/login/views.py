@@ -6,10 +6,6 @@ from .models import Usuario
 
 
 
-def main(request):
-    return render(request,'main.html')
-
-
 def loginForm(request):
     return render(request,'loginForm.html')
 
