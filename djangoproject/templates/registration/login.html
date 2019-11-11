@@ -1,11 +1,13 @@
 {% extends 'base.html' %}
+{% load static %}
+
 {% block titulo %}
 <title>Inicio de Sesión</title>
 {% endblock %}
 {% block contenido %}
 
 <div class="login-cont">
-    <div class="form-cont">
+    <div class="container form-cont">
         <p class="titulo">Inicio de Sesión</p>
         <form method="post" id="login-form">
             {% csrf_token %}
@@ -32,4 +34,8 @@
     </div>
 </div>
 
+{% endblock %}
+
+{% block script %}
+    <script src="{% static 'js/script-login.js' %}"></script>
 {% endblock %}

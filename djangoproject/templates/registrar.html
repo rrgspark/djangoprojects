@@ -5,7 +5,7 @@
 {% endblock %}
 
 {% block contenido %}
-<div class="registro-cont">
+<div class="container registro-cont">
     <p class="titulo">Registro de Usuario</p>
     <form id="forma-registro" action="registrar" method="post" class="registro-form" onsubmit="validPass()">
         {% csrf_token %}

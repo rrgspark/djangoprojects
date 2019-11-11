@@ -4,12 +4,29 @@
 {% endblock %}
 {% block contenido %}
 
-    {% if user.is_authenticated %}
-        {{user.first_name}} {{user.last_name}}
-        <a href="logout" title="Cerrar Sesión">Cerrar Sesión</a>
-    {% else %}
-        <a href="login" title="Iniciar Sesión">Iniciar Sesión</a>
-    {% endif %}
+    <div class='container cont-main'>
+        {% if user.is_authenticated %}
+            <p class="titulo" style="text-align:center;">To Do List</p>
+            <table class="table table-hover">
+                <thead>
+                    <tr>
+                        <th class="lista-descr-h">Descripción</th>
+                        <th class="lista-comp-h">Completado</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for item in items %}
+                        <tr>
+                            <td>{{item.descripcion}}</td>
+                            <td class="lista-comp-r">{{item.completado}}</td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        {% else %}
+            <h2 style="text-align:center;">Debes iniciar sesión</h2>
+        {% endif %}
+    </div>
     
 
 {% endblock %}

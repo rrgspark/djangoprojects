@@ -12,14 +12,15 @@ body {
 
 .titulo{
     font-size: 22px;
-    color: darkgray;
+    color: rgb(90, 128, 185);
     margin-bottom: 25px;
+    font-weight: bold;
 }
 
 .form-cont{
     height:400px;
     width: 250px;
-    margin-top: 5%;
+    margin-top: 3%;
     padding: 15px;
     margin-left: 44%;
     text-align: center;
@@ -38,11 +39,12 @@ body {
 }
 
 .btn_login {
-    margin-top: 10px;
+    margin-top: 20px;
     border-radius: 6px;
     background: rgb(113, 113, 161);
     border: none;
     color: white;
+    height: 30px;
 }
 
 .btn_login:hover {
@@ -65,9 +67,9 @@ button[disabled], html input[disabled]:hover {
 }
 
 .registro-cont{
-    height:400px;
-    width: 300px;
-    margin-top: 5%;
+    height:600px;
+    width: 400px;
+    margin-top: 3%;
     padding: 15px;
     margin-left: 44%;
     text-align: center;

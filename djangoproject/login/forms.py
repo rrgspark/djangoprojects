@@ -21,3 +21,38 @@ class RegisterForm(UserCreationForm):
             'password1',
             'password2'
         )
+
+
+    def clean_username(self):
+        username = self.cleaned_data.get("username")
+        try:
+            User._default_manager.get(username=username)
+            raise forms.ValidationError( 
+                'El usuario ya existe.',
+                code='username_exists',
+            )
+        except User.DoesNotExist:
+            return username
+
+
+    def clean_email(self):
+        email = self.cleaned_data.get("email")
+        try:
+            User._default_manager.get(email=email)
+            raise forms.ValidationError( 
+                'El correo electrónico ya está en uso.',
+                code='email_exists',
+            )
+        except User.DoesNotExist:
+            return email
+
+
+    def clean_password2(self):
+        password1 = self.cleaned_data.get("password1")
+        password2 = self.cleaned_data.get("password2")
+        if password1 and password2 and password1 != password2:
+            raise forms.ValidationError(
+                'La contraseña no coincide.',
+                code='password_mismatch',
+            )
+        return password2
