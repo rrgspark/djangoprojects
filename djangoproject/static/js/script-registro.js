@@ -1,4 +1,4 @@
-var pass = document.getElementById("password1"),
+/*var pass = document.getElementById("password1"),
   pass2 = document.getElementById("password2"),
   btnAceptar = document.getElementById("btn-aceptar-reg"),
   mensaje = document.getElementById("mensaje-pass");
@@ -14,4 +14,4 @@ var validPass = function(){
 }
 pass2.addEventListener("change", function( event ) {
 	validPass();
-}, true);
+}, true);*/

@@ -1,12 +1,15 @@
 {% extends 'base.html' %}
 {% block titulo %}
-    <title>To Do List</title>
+    <title>Principal</title>
 {% endblock %}
 {% block contenido %}
 
     {% if user.is_authenticated %}
         {{user.first_name}} {{user.last_name}}
+        <a href="logout" title="Cerrar Sesión">Cerrar Sesión</a>
+    {% else %}
+        <a href="login" title="Iniciar Sesión">Iniciar Sesión</a>
     {% endif %}
-    <a href="logout" title="Cerrar Sesión">Log out</a>
+    
 
 {% endblock %}

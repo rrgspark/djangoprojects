@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+{% block titulo %}
+<title>Inicio de Sesión</title>
+{% endblock %}
+{% block contenido %}
+
+<div class="login-cont">
+    <div class="form-cont">
+        <p class="titulo">Inicio de Sesión</p>
+        <form method="post" id="login-form">
+            {% csrf_token %}
+            {% for field in form %}
+                {% if field.name == "username" %}
+                    <div class="div_campos">
+                        <label >Usuario:</label>
+                    </div>
+                {% elif field.name == "password" %}
+                    <div class="div_campos">
+                        <label >Contraseña:</label>
+                    </div>
+                {% endif %}
+                {{ field }}
+            {% endfor %}
+            <div >
+                <a href="../registrar" title="Registrar un usuario nuevo">Registrar</a>&nbsp;|&nbsp;<input class="btn_login" type="submit" value="Log In">
+            </div>
+        </form>
+        {% if form.errors %}
+            <p class="error_msg">Usuario o Contraseña inválidos.</p>
+        {% endif %}
+
+    </div>
+</div>
+
+{% endblock %}
