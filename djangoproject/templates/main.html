@@ -20,7 +20,7 @@
                         <tr {% if item.completado %} class="item-done" {% endif %}>
                             <td>{{item.descripcion}}</td>
                             <td class="lista-comp-r"><input type="checkbox" class="checkbox-lista" {% if item.completado %} checked {% endif %}></td>
-                            <td><a href="" style="color:red;" title="Borrar registro"><i class="fa fa-trash icono-lista"></i></a></td>
+                            <td><a href="{% url 'delete_item' item.pk %}" title="Borrar registro" style="color:red;"><i class="fa fa-trash icono-lista"></i></a></td>
                         </tr>
                     {% endfor %}
                 </tbody>
