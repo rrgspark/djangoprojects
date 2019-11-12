@@ -114,3 +114,17 @@ button[disabled], html input[disabled]:hover {
 .checkbox-lista{
     cursor: pointer;
 }
+
+.cont_completado{
+    display: inline-block;
+    text-align: center;
+}
+
+.campo_descr{
+    width: 80%;
+}
+
+.modal-header,
+.modal-footer{
+    border-style: none;
+}

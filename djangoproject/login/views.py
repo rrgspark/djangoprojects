@@ -6,10 +6,6 @@ from .models import Usuario
 
 
 
-def loginForm(request):
-    return render(request,'loginForm.html')
-
-
 def login(request):
     username = request.POST['username']
     password = request.POST['password']
@@ -20,12 +16,12 @@ def login(request):
         return render(request,'main.html')
     else:
         messages.info(request,'Usuario o Contraseña inválidos')
-        return render(request,'loginForm.html',{'username':username})
+        return render(request,'login.html',{'username':username})
 
 
 def logout(request):
     auth.logout(request)
-    return redirect('main')
+    return redirect('/')
 
 
 def registrar(request):
@@ -33,7 +29,7 @@ def registrar(request):
         form = RegisterForm(request.POST)
         if form.is_valid():
             form.save()
-            return redirect('main')
+            return redirect('/')
     else:
         form = RegisterForm()
     return render(request,'registrar.html', {'form':form})

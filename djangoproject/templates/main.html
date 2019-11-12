@@ -1,4 +1,6 @@
 {% extends 'base.html' %}
+{% load static %}
+
 {% block titulo %}
     <title>Principal</title>
 {% endblock %}
@@ -6,9 +8,9 @@
 
     <div class='container cont-main'>
         {% if user.is_authenticated %}
-            <p class="titulo" style="text-align:center;">To Do List</p>
+            <p class="titulo" style="text-align:center;">To Do List</p>{{creacion}}
             <div class="container action-cont">
-                <a href="" title="Agregar registro" data-toggle="modal" data-target="#modalRegistro">
+                <a href="" onclick="javascript:crear()" title="Agregar registro" data-toggle="modal" data-target="#modalRegistro">
                     <i class="fa fa-plus-circle icono-agregar"></i>
                 </a>
             </div>
@@ -23,8 +25,14 @@
                 <tbody>
                     {% for item in items %}
                         <tr {% if item.completado %} class="item-done" {% endif %}>
-                            <td>{{item.descripcion}}</td>
-                            <td class="lista-comp-r"><input type="checkbox" class="checkbox-lista" {% if item.completado %} checked {% endif %}></td>
+                            <td>
+                                <a href="" onclick="javascript:editar('{{item.descripcion}}',{{item.pk}},'{{item.completado}}'=='True')" title="Editar" data-toggle="modal" data-target="#modalRegistro">
+                                    {{item.descripcion}}
+                                </a>
+                            </td>
+                            <td class="lista-comp-r">
+                                <input onclick="javascript:actualizar_checkbox('{{item.descripcion}}',{{item.pk}},'{{csrf_token}}')"id="id_compl_lista{{item.pk}}" type="checkbox" class="checkbox-lista" {% if item.completado %} checked {% endif %}>
+                            </td>
                             <td><a href="{% url 'delete_item' item.pk %}" title="Borrar registro" style="color:red;"><i class="fa fa-trash icono-lista"></i></a></td>
                         </tr>
                     {% endfor %}
@@ -39,22 +47,32 @@
     <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalCenterTitle">Nueva tarea</h5>
+                <h5 class="modal-title" id="titulo-reg">Nueva tarea</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Cerrar">
                     <span aria-hidden="true">&times;</span>
                 </button>
                 </div>
                 <div class="modal-body">
-                    <form action="registrar_item" method="post">
-                        <input type="text" name="descripcion" required autofocus>
+                    <form action="registrar_item" method="post" id="forma-registro">
+                        {% csrf_token %}
+                        <input type="text" name="item_id" hidden id="item_id">
+                        <input type="text" name="descripcion" class="campo_descr" required id="id_descripcion">
+                        <div class="cont_completado">
+                            <label>Completado</label><br>
+                            <input type="checkbox" name="completado" id="id_completado" value=True>
+                        </div>
                     </form>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-primary">Guardar</button>
+                    <button type="submit" form="forma-registro" class="btn btn-primary" id="boton-reg">Guardar</button>
                 </div>
             </div>
         </div>
     </div>
 </div>
 
+{% endblock %}
+
+{% block script %}
+    <script src="{% static 'js/script-main.js' %}"></script>
 {% endblock %}
