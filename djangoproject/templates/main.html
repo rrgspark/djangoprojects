@@ -7,6 +7,11 @@
     <div class='container cont-main'>
         {% if user.is_authenticated %}
             <p class="titulo" style="text-align:center;">To Do List</p>
+            <div class="container action-cont">
+                <a href="" title="Agregar registro" data-toggle="modal" data-target="#modalRegistro">
+                    <i class="fa fa-plus-circle icono-agregar"></i>
+                </a>
+            </div>
             <table class="table table-hover">
                 <thead>
                     <tr>
@@ -29,6 +34,27 @@
             <h2 style="text-align:center;">Debes iniciar sesión</h2>
         {% endif %}
     </div>
-    
+
+<div class="modal fade" id="modalRegistro" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalCenterTitle">Nueva tarea</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Cerrar">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                </div>
+                <div class="modal-body">
+                    <form action="registrar_item" method="post">
+                        <input type="text" name="descripcion" required autofocus>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary">Guardar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 
 {% endblock %}

@@ -100,7 +100,15 @@ button[disabled], html input[disabled]:hover {
 
 .icono-lista{
     font-size: 20px;
-    cursor: pointer;
+}
+
+.icono-agregar{
+    font-size: 35px;
+}
+
+.action-cont{
+    margin: 5px 0 10px 0;
+    text-align: right;
 }
 
 .checkbox-lista{
