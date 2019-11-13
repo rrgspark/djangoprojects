@@ -23,14 +23,19 @@
                 {% endif %}
                 {{ field }}
             {% endfor %}
+            <br><br>
             <div >
-                <a href="../registrar" title="Registrar un usuario nuevo">Registrar</a>&nbsp;|&nbsp;<input class="btn_login" type="submit" value="Log In">
+                <a href="../registrar" title="Registrar un usuario nuevo">Registrar</a>&nbsp;&nbsp;|&nbsp;&nbsp;<button class="btn_login" type="submit" value="Log In">Log In</button>
             </div>
+            <br>
+            <div>
+                <a href="../recuperar_pass" style="text-decoration:underline; font-size: 12px;" title="Recuperar Contraseña">Olvidé mi contraseña</a>
+            </div>
+            <br>
+            {% if form.errors %}
+                <p class="error_msg">Usuario o Contraseña inválidos.</p>
+            {% endif %}
         </form>
-        {% if form.errors %}
-            <p class="error_msg">Usuario o Contraseña inválidos.</p>
-        {% endif %}
-
     </div>
 </div>
 

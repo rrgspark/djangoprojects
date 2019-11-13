@@ -8,7 +8,7 @@
 
     <div class='container cont-main'>
         {% if user.is_authenticated %}
-            <p class="titulo" style="text-align:center;">To Do List</p>{{creacion}}
+            <p class="titulo" style="text-align:center;">To Do List</p>
             <div class="container action-cont">
                 <a href="" onclick="javascript:crear()" title="Agregar registro" data-toggle="modal" data-target="#modalRegistro">
                     <i class="fa fa-plus-circle icono-agregar"></i>
@@ -39,7 +39,9 @@
                 </tbody>
             </table>
         {% else %}
-            <h2 style="text-align:center;">Debes iniciar sesión</h2>
+            <div>
+                <h2 style="text-align:center;">Debes iniciar sesión</h2>
+            </div>
         {% endif %}
     </div>
 

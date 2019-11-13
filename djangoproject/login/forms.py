@@ -56,3 +56,43 @@ class RegisterForm(UserCreationForm):
                 code='password_mismatch',
             )
         return password2
+
+
+class CorreoForm(forms.Form):
+    email = forms.EmailField(label="Ingresa el correo electrónico de tu cuenta", required=True, error_messages={'invalid': 'Ingresa un correo electrónico válido.'})
+
+    def clean_email(self):
+        email = self.cleaned_data.get("email")
+        try:
+            User._default_manager.get(email=email)
+            return email
+            
+        except User.DoesNotExist:
+            raise forms.ValidationError( 
+                'El correo electrónico no está registrado.',
+                code='email_exists',
+            )
+
+
+class CambiarPassForm(forms.Form):
+    email = forms.EmailField(label="", widget=forms.EmailInput(attrs={'class': 'disabled_email','readonly':True}))
+    password1 = forms.CharField(widget=forms.PasswordInput(attrs={'autofocus':True}), label='Nueva contraseña', required=True)
+    password2 = forms.CharField(widget=forms.PasswordInput, label='Confirmar contraseña', required=True)
+
+    class Meta:
+        fields = (
+            'email',
+            'password1',
+            'password2'
+        )
+
+    
+    def clean_password2(self):
+        password1 = self.cleaned_data.get("password1")
+        password2 = self.cleaned_data.get("password2")
+        if password1 and password2 and password1 != password2:
+            raise forms.ValidationError(
+                'La contraseña no coincide.',
+                code='password_mismatch'
+            )
+        return password2

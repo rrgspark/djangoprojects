@@ -1,3 +1,6 @@
+html, body {
+    height: 100%;
+}
 body {
     margin: 0;
     padding: 0;
@@ -6,6 +9,19 @@ body {
     color: black;
     background: rgb(248, 248, 248);
 }
+
+.navbar-brand {
+    padding-top: 0px;
+    padding-bottom: 0;
+    font-size: 25px;
+}
+
+.icon-user{
+    font-size: 18px;
+    color: #007bff;
+}
+
+/*estilos login*/
 .login-cont{
     text-align: center;
 }
@@ -23,10 +39,10 @@ body {
     margin-top: 3%;
     padding: 15px;
     text-align: center;
-    border-style: solid;
+    /*border-style: solid;
     border-width: 3px;
     border-color:rgba(164, 170, 185, 0.541);
-    border-radius: 15px;
+    border-radius: 15px;*/
 }
 
 .label_login{
@@ -65,22 +81,24 @@ button[disabled], html input[disabled]:hover {
     font-weight: bold;
 }
 
+/*estilos registro usuarios*/
 .registro-cont{
     height:600px;
     width: 400px;
     margin-top: 3%;
     padding: 15px;
     text-align: center;
-    border-style: solid;
+    /*border-style: solid;
     border-width: 3px;
     border-color:rgba(164, 170, 185, 0.541);
-    border-radius: 15px;
+    border-radius: 15px;*/
 }
 
 .campo-registro{
     margin: 5px 0 5px 0;
 }
 
+/*estilos main(to do list)*/
 .cont-main{
     margin-top: 2%;
 }
@@ -127,4 +145,22 @@ button[disabled], html input[disabled]:hover {
 .modal-header,
 .modal-footer{
     border-style: none;
+}
+
+.cont_recuperar{
+    text-align: center;
+}
+
+.margen_custom{
+    margin-top: 20px;
+}
+
+.correo_enviado{
+    font-size: 20px;
+    color: green;
+}
+
+.disabled_email{
+    cursor: default;
+    background-color: rgba(128, 128, 128, 0.274);
 }
