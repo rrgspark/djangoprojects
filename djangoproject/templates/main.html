@@ -10,7 +10,7 @@
         {% if user.is_authenticated %}
             <p class="titulo" style="text-align:center;">To Do List</p>
             <div class="container action-cont">
-                <a href="" onclick="javascript:crear()" title="Agregar registro" data-toggle="modal" data-target="#modalRegistro">
+                <a href="" onclick="javascript:click_crear()" title="Agregar registro" data-toggle="modal" data-target="#modalRegistro">
                     <i class="fa fa-plus-circle icono-agregar"></i>
                 </a>
             </div>
@@ -26,14 +26,14 @@
                     {% for item in items %}
                         <tr {% if item.completado %} class="item-done" {% endif %}>
                             <td>
-                                <a href="" onclick="javascript:editar('{{item.descripcion}}',{{item.pk}},'{{item.completado}}'=='True')" title="Editar" data-toggle="modal" data-target="#modalRegistro">
+                                <a href="" onclick="javascript:click_editar('{{item.descripcion}}',{{item.pk}},'{{item.completado}}'=='True')" title="Editar" data-toggle="modal" data-target="#modalRegistro">
                                     {{item.descripcion}}
                                 </a>
                             </td>
                             <td class="lista-comp-r">
-                                <input onclick="javascript:actualizar_checkbox('{{item.descripcion}}',{{item.pk}},'{{csrf_token}}')"id="id_compl_lista{{item.pk}}" type="checkbox" class="checkbox-lista" {% if item.completado %} checked {% endif %}>
+                                <input onclick="javascript:actualizar_checkbox('{{item.descripcion}}',{{item.pk}})"id="id_compl_lista{{item.pk}}" type="checkbox" class="checkbox-lista" {% if item.completado %} checked {% endif %}>
                             </td>
-                            <td><a href="{% url 'delete_item' item.pk %}" title="Borrar registro" style="color:red;"><i class="fa fa-trash icono-lista"></i></a></td>
+                            <td><a href="javascript:borrar_registro({{item.pk}})" title="Borrar registro" style="color:red;"><i class="fa fa-trash icono-lista"></i></a></td>
                         </tr>
                     {% endfor %}
                 </tbody>
@@ -55,10 +55,10 @@
                 </button>
                 </div>
                 <div class="modal-body">
-                    <form action="registrar_item" method="post" id="forma-registro">
+                    <form id="forma-registro">
                         {% csrf_token %}
                         <input type="text" name="item_id" hidden id="item_id">
-                        <input type="text" name="descripcion" class="campo_descr" required id="id_descripcion">
+                        <input type="text" name="descripcion" class="campo_descr" required id="id_descripcion" onblur="validarDescripcion(this);">
                         <div class="cont_completado">
                             <label>Completado</label><br>
                             <input type="checkbox" name="completado" id="id_completado" value=True>
@@ -66,7 +66,7 @@
                     </form>
                 </div>
                 <div class="modal-footer">
-                    <button type="submit" form="forma-registro" class="btn btn-primary" id="boton-reg">Guardar</button>
+                    <button onclick="tareas()" class="btn btn-primary" id="boton-reg">Guardar</button>
                 </div>
             </div>
         </div>
@@ -76,5 +76,6 @@
 {% endblock %}
 
 {% block script %}
+    <script> var token = '{{csrf_token}}';</script>
     <script src="{% static 'js/script-main.js' %}"></script>
 {% endblock %}

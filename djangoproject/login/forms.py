@@ -4,12 +4,12 @@ from django.contrib.auth.models import User
 
 
 class RegisterForm(UserCreationForm):
-    username = forms.CharField(label='Usuario', required=True)
-    password1 = forms.CharField(widget=forms.PasswordInput, label='Contraseña', required=True)
-    password2 = forms.CharField(widget=forms.PasswordInput, label='Confirmar contraseña', required=True)
-    first_name = forms.CharField(label='Nombre', required=True)
-    last_name = forms.CharField(label='Apellidos', required=False)
-    email = forms.EmailField(label='Correo Electrónico', required=True)
+    username = forms.CharField(widget=forms.TextInput(attrs={'class':'campo-generico', 'placeholder':'Usuario'}),required=True)
+    password1 = forms.CharField(widget=forms.PasswordInput(attrs={'class':'campo-generico', 'placeholder':'Contraseña'}), required=True)
+    password2 = forms.CharField(widget=forms.PasswordInput(attrs={'class':'campo-generico', 'placeholder':'Confirmar contraseña'}), required=True)
+    first_name = forms.CharField(widget=forms.TextInput(attrs={'class':'campo-generico', 'placeholder':'Nombre'}), required=True)
+    last_name = forms.CharField(widget=forms.TextInput(attrs={'class':'campo-generico', 'placeholder':'Apellidos'}), required=False)
+    email = forms.EmailField(widget=forms.EmailInput(attrs={'class':'campo-generico', 'placeholder':'Correo Electrónico'}), required=True)
 
     class Meta:
         model = User
@@ -59,7 +59,11 @@ class RegisterForm(UserCreationForm):
 
 
 class CorreoForm(forms.Form):
-    email = forms.EmailField(label="Ingresa el correo electrónico de tu cuenta", required=True, error_messages={'invalid': 'Ingresa un correo electrónico válido.'})
+    email = forms.EmailField(
+        label="Ingresa el correo electrónico de tu cuenta", 
+        widget= forms.EmailInput(attrs={'class':'campo-generico'}),
+        required=True, error_messages={'invalid': 'Ingresa un correo electrónico válido.'}
+        )
 
     def clean_email(self):
         email = self.cleaned_data.get("email")
@@ -75,9 +79,9 @@ class CorreoForm(forms.Form):
 
 
 class CambiarPassForm(forms.Form):
-    email = forms.EmailField(label="", widget=forms.EmailInput(attrs={'class': 'disabled_email','readonly':True}))
-    password1 = forms.CharField(widget=forms.PasswordInput(attrs={'autofocus':True}), label='Nueva contraseña', required=True)
-    password2 = forms.CharField(widget=forms.PasswordInput, label='Confirmar contraseña', required=True)
+    email = forms.EmailField(label="", widget=forms.EmailInput(attrs={'class': 'disabled_email campo-generico','readonly':True}))
+    password1 = forms.CharField(widget=forms.PasswordInput(attrs={'autofocus':True, 'class':'campo-generico'}), label='Nueva contraseña', required=True)
+    password2 = forms.CharField(widget=forms.PasswordInput(attrs={'class':'campo-generico'}), label='Confirmar contraseña', required=True)
 
     class Meta:
         fields = (

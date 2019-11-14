@@ -11,14 +11,20 @@ body {
 }
 
 .navbar-brand {
+    color: #142E60 !important;
     padding-top: 0px;
     padding-bottom: 0;
-    font-size: 25px;
+    font-size: 24px;
+    font-weight: bold;
 }
 
 .icon-user{
     font-size: 18px;
     color: #007bff;
+}
+
+.bg-darkish {
+    background-color: #464e57!important;
 }
 
 /*estilos login*/
@@ -147,6 +153,8 @@ button[disabled], html input[disabled]:hover {
     border-style: none;
 }
 
+
+/*recuperar contraseña*/
 .cont_recuperar{
     text-align: center;
 }
@@ -163,4 +171,14 @@ button[disabled], html input[disabled]:hover {
 .disabled_email{
     cursor: default;
     background-color: rgba(128, 128, 128, 0.274);
+}
+
+/*otros*/
+.invalid-field {
+    border-color: red;
+}
+
+.campo-generico{
+    margin: 10px 0 10px 0;
+    width: 250px;
 }

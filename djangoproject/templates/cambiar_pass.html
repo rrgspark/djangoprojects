@@ -12,7 +12,7 @@
         <form action="" method="post" style="text-align:center;">
             {% csrf_token %}
             {% for field in form%}
-                <label class="campo-registro">{{ field.label}}</label><br>
+                <label>{{ field.label}}</label><br>
                 {{field}}<br>
             {% endfor %}
             <div class="margen_custom">

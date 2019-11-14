@@ -10,7 +10,6 @@
     <form id="forma-registro" action="registrar" method="post" class="registro-form">
         {% csrf_token %}
         {% for field in form %}
-            <label class="campo-registro">{{ field.label}}</label><br>
             {{ field }}<br>
         {% endfor %}
         <button type="submit" value="Aceptar" class="btn_login" id="btn-aceptar-reg">Aceptar</button>
