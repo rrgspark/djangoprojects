@@ -10,6 +10,13 @@ $(document).ready(function(){
         });
         localStorage.clear();
     }
+    $('#id_descripcion').on("keyup",function(e){
+        if (event.keyCode === 13) {
+            $('#boton-reg').focus();
+            $('#boton-reg').click();
+        }
+    });
+
 });
 $('#modalRegistro').on('show.bs.modal', function () {
         if (creacion){

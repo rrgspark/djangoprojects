@@ -9,7 +9,29 @@ body {
     color: black;
     background: rgb(248, 248, 248);
 }
-
+.div-bg{
+    position: relative;
+    height: 100%;
+}
+.div-bg:after{
+    content: ' ';
+    display: block;
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    opacity: 0.5;
+    background-image: url('/static/img/bgunderwater.jpeg');
+    background-repeat: no-repeat;
+    background-position: 50% 0;
+    -ms-background-size: cover;
+    -o-background-size: cover;
+    -moz-background-size: cover;
+    -webkit-background-size: cover;
+    background-size: cover;
+}
 .navbar-brand {
     color: #142E60 !important;
     padding-top: 0px;
@@ -25,6 +47,7 @@ body {
 
 .bg-darkish {
     background-color: #464e57!important;
+    box-shadow: 0 2px 5px 0 rgba(0,0,0,0.3), 0 2px 10px 0 rgba(0, 0, 0, 1);
 }
 
 /*estilos login*/
@@ -40,15 +63,12 @@ body {
 }
 
 .form-cont{
-    height:400px;
     width: 250px;
     margin-top: 3%;
     padding: 15px;
     text-align: center;
-    /*border-style: solid;
-    border-width: 3px;
-    border-color:rgba(164, 170, 185, 0.541);
-    border-radius: 15px;*/
+    border-radius: 15px;
+    background-color: rgba(240, 255, 255, 0.808);
 }
 
 .label_login{
@@ -89,15 +109,12 @@ button[disabled], html input[disabled]:hover {
 
 /*estilos registro usuarios*/
 .registro-cont{
-    height:600px;
     width: 400px;
     margin-top: 3%;
     padding: 15px;
     text-align: center;
-    /*border-style: solid;
-    border-width: 3px;
-    border-color:rgba(164, 170, 185, 0.541);
-    border-radius: 15px;*/
+    border-radius: 15px;
+    background-color: rgba(240, 255, 255, 0.808);
 }
 
 .campo-registro{
@@ -106,7 +123,7 @@ button[disabled], html input[disabled]:hover {
 
 /*estilos main(to do list)*/
 .cont-main{
-    margin-top: 2%;
+    margin-top: 3%;
 }
 
 .lista-descr-h{
@@ -119,7 +136,7 @@ button[disabled], html input[disabled]:hover {
 }
 
 .item-done{
-    background-color: #dff0d8;
+    background-color: #abcc9d;
 }
 
 .icono-lista{
@@ -181,4 +198,10 @@ button[disabled], html input[disabled]:hover {
 .campo-generico{
     margin: 10px 0 10px 0;
     width: 250px;
+}
+
+.formas-div{
+    border-radius: 15px;
+    padding-top:3px;
+    background-color: rgba(240, 255, 255, 0.808);
 }

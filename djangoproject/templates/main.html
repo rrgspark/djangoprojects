@@ -6,7 +6,7 @@
 {% endblock %}
 {% block contenido %}
 
-    <div class='container cont-main'>
+    <div class='container cont-main formas-div'>
         {% if user.is_authenticated %}
             <p class="titulo" style="text-align:center;">To Do List</p>
             <div class="container action-cont">
@@ -38,6 +38,7 @@
                     {% endfor %}
                 </tbody>
             </table>
+            <br>
         {% else %}
             <div>
                 <h2 style="text-align:center;">Debes iniciar sesión</h2>
