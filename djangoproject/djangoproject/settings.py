@@ -42,6 +42,7 @@ INSTALLED_APPS = [
 ]
 
 MIDDLEWARE = [
+    'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -128,6 +129,7 @@ STATICFILES_DIRS = [
 ]
 STATIC_ROOT =  os.path.join(BASE_DIR,'assets')
 
+STATICFILES_STORAGE = 'whitenoise.django.GzipManifestStaticFilesStorage'
 LOGIN_REDIRECT_URL = 'main'
 
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
@@ -136,3 +138,6 @@ EMAIL_USE_TLS = True
 EMAIL_PORT = 587
 EMAIL_HOST_USER = 'ricardo.ruiz@sparktechs.com'
 EMAIL_HOST_PASSWORD = 'spark123!'
+
+import django_heroku
+django_heroku.settings(locals())
