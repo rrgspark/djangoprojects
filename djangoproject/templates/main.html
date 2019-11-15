@@ -6,8 +6,8 @@
 {% endblock %}
 {% block contenido %}
 
-    <div class='container cont-main formas-div'>
-        {% if user.is_authenticated %}
+    {% if user.is_authenticated %}
+        <div class='container cont-main formas-div'>
             <p class="titulo" style="text-align:center;">To Do List</p>
             <div class="container action-cont">
                 <a href="" onclick="javascript:click_crear()" title="Agregar registro" data-toggle="modal" data-target="#modalRegistro">
@@ -39,12 +39,8 @@
                 </tbody>
             </table>
             <br>
-        {% else %}
-            <div>
-                <h2 style="text-align:center;">Debes iniciar sesión</h2>
-            </div>
-        {% endif %}
-    </div>
+        </div>
+    {% endif %}
 
 <div class="modal fade" id="modalRegistro" tabindex="-1" role="dialog" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered" role="document">
@@ -77,6 +73,8 @@
 {% endblock %}
 
 {% block script %}
-    <script> var token = '{{csrf_token}}';</script>
+    <script> 
+        var token = '{{csrf_token}}', loggedin = '{{user.is_authenticated}}';
+    </script>
     <script src="{% static 'js/script-main.js' %}"></script>
 {% endblock %}
