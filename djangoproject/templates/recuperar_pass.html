@@ -11,6 +11,7 @@
         {% if enviado %}
             <div style="text-align:center;">
                 <p class="correo_enviado">Ha sido enviado un correo para continuar con el cambio de contraseña</p>
+                <br>
             </div>
         {% else %}
             <form id="forma-recuperar-pass" action="recuperar_pass" method="post" style="text-align:center;">
@@ -33,6 +34,7 @@
                         {% endif %}
                     {% endfor %}
                 </div>
+                <br>
             </form>
         {% endif %}
     </div>

@@ -44,6 +44,7 @@ def recuperar_pass(request):
         form = CorreoForm(request.POST)
         if form.is_valid():
             user = User.objects.get(email=request.POST['email'])
+            url = request.build_absolute_uri().replace('recuperar_pass','cambiar_pass')
             html = f'''
             <!DOCTYPE html>
             <html>
@@ -52,7 +53,7 @@ def recuperar_pass(request):
                 Buen día, {user.first_name}<br><br>
                 Has solicitado un cambio de contraseña, para continuar con el proceso sigue el siguiente enlace:<br><br>
                 <div style="font-size:20px;text-align:center;">
-                    <a href="http://localhost:8000/cambiar_pass/{user.pk}">Click Aquí</a>
+                    <a href="{url}/{user.pk}">Click Aquí</a>
                 </div>
                 <br>
                 Atentamente<br>
